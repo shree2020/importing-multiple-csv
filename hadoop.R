@@ -20,14 +20,14 @@ sc <- sparkR.init(master="spark://MasterSys:7077",
 sparkPackages="com.databricks:spark-csv_2.11:1.2.0")
 sqlContext<- sparkRSQL.init(sc)
 
-#nme<- hdfslist.files(path = "/afs/")
-#fs<-system("/opt/hadoop/bin/hadoop dfs -stat '%n' /afs/*",intern = T)
+nme<- hdfslist.files(path = "/afs/")
+nme1<-system("/opt/hadoop/bin/hadoop dfs -stat '%n' /afs/*",intern = T)
 #str(fs)
 
-#for(i in 1:length(nme1))
-#{
-#  assign(paste("df",i),hdfs.read(paste0(nme1[i],sep="/",eval(parse(text =nme1[i])))))
-#}
+for(i in 1:length(nme1))
+{
+  assign(paste("df",i),hdfs.read(paste0(nme1[i],sep="/",eval(parse(text =nme1[i])))))
+}
 
 #files<- hdfslist.files("/afs/*.csv")
 #files<-as.data.frame(files$file)
